@@ -8,28 +8,23 @@ export function ArcadeHero() {
     <div className="grid items-center gap-10 md:grid-cols-2">
       <div>
         <div className="inline-block rounded border-4 border-white px-3 py-1 font-serif text-[10px] md:text-xs leading-none mb-4">
-          Coming Soon
+          🔵 Coming Soon
         </div>
         <h1 className="font-serif text-balance text-xl md:text-3xl lg:text-4xl neon-flicker">
-          Your NFT Sniper Agent – Always Playing the Game for You!
+          Your NFT Trading Agent – Always Playing the Game for You!
         </h1>
         <p className="mt-4 text-pretty text-white/80 leading-relaxed">
-          Place collection-wide or trait-specific bids gaslessly. Sit back, and let your arcade agent do the trading.
+          Place collection-wide or trait-specific bids gaslessly. Sit back, and let the agent do the trading.
         </p>
 
         <div className="mt-6 flex items-center gap-4" id="start">
           <NeonButton href="/chat" variant="primary">
-            Insert Coin to Start
+            Start the Trade
           </NeonButton>
           <NeonButton href="#how" variant="ghost">
             See How It Works
           </NeonButton>
         </div>
-
-        <ul className="mt-6 grid gap-2 text-xs text-white/70" id="how">
-          <li>• Automated snipe rules for price, rarity, and traits</li>
-          <li>• Runs continuously — no gas until a match is found</li>
-        </ul>
       </div>
 
       <div className="relative">
@@ -52,9 +47,9 @@ export function ArcadeHero() {
                   alt="Laser Eyes Ape NFT icon"
                   className="h-5 w-5 md:h-6 md:w-6 image-render-pixel"
                 />
-                <span className="font-serif text-[10px] md:text-xs text-cyan-300">RARE PICKUP!</span>
+                <span className="font-serif text-[10px] md:text-xs text-cyan-300">PICKUP NFT!</span>
               </div>
-              <p className="mt-3 text-xs text-white/80">Agent grabs rare NFT like a glowing power-up.</p>
+              <p className="mt-3 text-xs text-white/80">Tell me you are rich, without telling me you are rich</p>
             </div>
 
             <div className="mt-4 h-1 w-40 animate-pulse bg-pink-500" />
