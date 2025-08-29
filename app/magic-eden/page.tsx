@@ -6,7 +6,7 @@ export default function Page() {
     <main>
       <header className="bg-black text-white border-b border-pink-500">
         <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
-          <h1 className="font-serif text-base md:text-lg tracking-widest"> </h1>
+          <h1 className="font-serif text-base md:text-lg tracking-widest">NFT Tradoor </h1>
           <nav className="text-xs md:text-sm">
             <ul className="flex items-center gap-6">
               <li>
