@@ -3,22 +3,17 @@ export default function FeatureSection() {
     {
       title: "Gasless Transactions",
       blurb:
-        "⚡ Built on account abstraction wallets, your trades happen without you ever paying gas. The agent handles it invisibly in the background.",
+        "Backed by @0xGasless. The agent handles the gas completely for you.",
     },
     {
       title: "Real-Time Marketplace Monitoring",
       blurb:
-        "👀 Constantly scans Magic Eden listings across collections and traits. No delays, no misses—the agent acts the moment your criteria match.",
+        "Constantly polls across collections to get the best price for you.",
     },
     {
-      title: "Trait-Based Bidding Logic",
+      title: "Trait-Based Bidding Logic (Coming Soon)",
       blurb:
-        "🎯 Advanced filters let you define trait-specific targets (e.g., Laser Eyes, Gold Fur). The agent only bids when those exact NFTs are listed.",
-    },
-    {
-      title: "Secure Smart Account Execution",
-      blurb:
-        "🔐 Transactions are executed via 0xGasless smart accounts—secure, non-custodial, and already SDK-integrated. No private keys, no risks.",
+        "Advanced filters let you define trait-specific targets (e.g., Laser Eyes, Gold Fur). The agent only bids when those exact NFTs are listed.",
     },
   ]
 

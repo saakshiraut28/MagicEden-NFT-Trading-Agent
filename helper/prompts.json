@@ -1,0 +1,64 @@
+{
+  "prompts": [
+    {
+      "id": "greeting",
+      "triggers": ["hi", "hello", "gm", "hey", "good morning", "hello chat", "gm gm"],
+      "response": "GM GM! This is a NFT Trading Agent! I'm here to help you with NFT bidding and collection info. \n\nTry asking me:\n• \"Give me info about [collection address]\"\n• \"Show me collection 0x...\"\n• Or just paste any NFT contract address!"
+    },
+    {
+      "id": "collection_info_request",
+      "triggers": ["give me info about", "show me", "tell me about", "collection info", "0x", "contract"],
+      "response": " **Collection Analysis Complete!**\n\n**Bored Ape Yacht Club #6437**\n\n**Contract Address:** 0x3c...8fee\n**Token ID:** 6437\n**Token Standard:** ERC-721\n**Owner:** 0x16...6291\n**Royalty:** 0%\n**Chain:** Avalanche\n\n** Current Price:** 42.5 ETH\n** Floor Price:** 38.2 ETH\n** Last Sale:** 41.0 ETH (2 days ago)\n\nInterested in bidding on this piece?"
+    },
+    {
+      "id": "bid_request",
+      "triggers": ["bid", "buy this nft", "buy at", "offer", "purchase", "eth", "buy for"],
+      "response": " **Bid Placement Initiated**\n\n**Your Bid:** 40 ETH\n**Target:** BAYC #6437\n**Current Owner Price:** 42.5 ETH\n\n **Polling for price updates...**\n\n*[Checking market conditions every 5 seconds]*\n\n **Price Update (5s):** Still listed at 42.5 ETH\n Your bid is 2.5 ETH below asking price\n\n"
+    },
+    {
+      "id": "execute_transaction",
+      "triggers": ["yes", "execute", "do it", "buy now", "get it now", "confirm", "proceed"],
+      "response": " **GASLESS TRANSACTION EXECUTING**\n\n **Status:** Processing...\n **Transaction Hash:** 0xabc123...def789\n **Gas Fee:** $0 (Gasless!)\n **Amount:** 40 ETH\n\n **SUCCESS!**\n\nCongratulations!  \nYou now own **Bored Ape Yacht Club #6437**\n\n**Transaction confirmed on Avalanche**\n View on Explorer: [https://magiceden.io/collections/avalanche/0x3c2f3382d5605714986295ac45ed2f06ff258fee]\n\nWant to set up monitoring for more opportunities?"
+    },
+    {
+      "id": "price_polling_update",
+      "triggers": ["price update", "current price", "refresh price", "check again"],
+      "response": " **Live Price Polling Active**\n\n**Update 1 (2s):** 42.5 ETH  42.5 ETH\n**Update 2 (4s):** 42.5 ETH  42.0 ETH \n**Update 3 (6s):** 42.0 ETH  41.8 ETH \n\n **Price dropped 0.7 ETH!**\nYour 40 ETH bid is now much closer!\n\nReady to execute? The price is moving in your favor!"
+    },
+    {
+      "id": "cancel_bid",
+      "triggers": ["cancel", "stop", "nevermind", "abort", "halt"],
+      "response": " **Bid Cancelled**\n\nYour 40 ETH bid on BAYC #6437 has been cancelled.\nNo gas fees charged since transaction wasn't executed.\n\nWant to:\n• Try a different amount?\n• Look at other NFTs?\n• Set up collection monitoring?"
+    },
+    {
+      "id": "collection_monitoring",
+      "triggers": ["monitor", "watch", "alert me", "track", "notify"],
+      "response": " **Collection Monitoring Setup**\n\n**Now Watching:** Bored Ape Yacht Club\n**Price Alerts:** Below 40 ETH\n**Trait Filters:** Any\n**Duration:** 24 hours\n\n I'll notify you when:\n• Price drops below your target\n• New listings appear\n• Rare traits become available\n\nMonitoring active! You'll get real-time updates."
+    },
+    {
+      "id": "help_flow",
+      "triggers": ["help", "how does this work", "guide", "what can you do", "confused"],
+      "response": " **How I Work:**\n\n**1.** Say hi and I'll greet you\n**2.** Give me any NFT collection address (0x...)\n**3.** I'll show you collection details & pricing\n**4.** Tell me to bid with \"buy at X ETH\"\n**5.** I'll poll for price updates (5 seconds)\n**6.** Confirm and I'll execute gasless transaction!\n\n**No upfront gas fees - only pay when you win!** "
+    },
+    {
+      "id": "status_check",
+      "triggers": ["status", "my bids", "active", "what's happening", "portfolio"],
+      "response": "**Your Dashboard**\n\n**Active Bids:** 1\n• BAYC #6437 - 40 ETH bid (pending)\n\n**Watching:** 3 collections\n• Bored Ape Yacht Club\n• Azuki\n• Pudgy Penguins\n\n**Today's Activity:**\n• 5 price alerts triggered\n• 2 successful bids\n• 0 gas fees paid\n\n**Portfolio Value:** 125.3 ETH"
+    },
+    {
+      "id": "different_collection",
+      "triggers": ["different collection", "another nft", "show me other", "different address", "new collection"],
+      "response": " **Switch Collections**\n\nPaste any collection address and I'll analyze it!\n\nPopular collections to try:\n• BAYC: 0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D\n• Azuki: 0xED5AF388653567Af2F388E6224dC7C4b3241C544\n• Punks: 0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB\n\nOr just paste any 0x... address!"
+    },
+    {
+      "id": "price_too_high",
+      "triggers": ["too expensive", "too high", "lower bid", "reduce price", "cheaper"],
+      "response": " **Price Adjustment Options**\n\nCurrent asking: 42.5 ETH\nYour bid: 40 ETH (94% of ask)\n\n**Suggested bids:**\n•  38 ETH (Floor price match)\n•  36 ETH (Aggressive discount)\n• 35 ETH (Patient strategy)\n\nWhich bid amount would you prefer? Or set a custom amount!"
+    },
+    {
+      "id": "gas_question",
+      "triggers": ["gas fee", "gas cost", "how much gas", "fees", "gasless"],
+      "response": " **Gasless Bidding Explained**\n\n **$0 Gas to Place Bids**\n **$0 Gas if Bid Rejected** \n **Pay Gas Only When You Win**\n\n**How it works:**\n1. I place bids using meta-transactions\n2. You only pay gas when bid is accepted\n3. Gas fee is deducted from your winning amount\n\n**Average gas cost when winning:** ~$15-30\n**Your savings on failed bids:** ~$200+ per week"
+    }
+  ]
+}

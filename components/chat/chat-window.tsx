@@ -6,11 +6,19 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { cn } from "@/lib/utils"
+import Image from "next/image"
+import promptsData from "./../../helper/prompts.json" // Import your JSON file
 
 type Msg = {
   id: string
   role: "assistant" | "user"
   content: string
+}
+
+type PromptData = {
+  id: string
+  triggers: string[]
+  response: string
 }
 
 export function ChatWindow() {
@@ -19,31 +27,55 @@ export function ChatWindow() {
       id: "w1",
       role: "assistant",
       content:
-        "Welcome to MagicEden Agent! Tell me your target collection, budget, and any trait filters—I’ll set up gasless bids for you.",
+        "Let's go!",
     },
   ])
   const [input, setInput] = useState("")
+  const [isTyping, setIsTyping] = useState(false)
   const scrollRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" })
   }, [messages])
 
+  // Function to find matching response from JSON
+  function findMatchingResponse(userInput: string): string {
+    const lowerInput = userInput.toLowerCase()
+    
+    for (const prompt of promptsData.prompts) {
+      const hasMatch = prompt.triggers.some(trigger => 
+        lowerInput.includes(trigger.toLowerCase())
+      )
+      if (hasMatch) {
+        return prompt.response
+      }
+    }
+    
+    // Default response if no match found
+    return "I understand you're interested in NFT bidding. Can you provide more details about the collection, budget, or specific traits you're looking for?"
+  }
+
   function sendMessage() {
     const text = input.trim()
     if (!text) return
+    
     const user: Msg = { id: crypto.randomUUID(), role: "user", content: text }
     setMessages((m) => [...m, user])
     setInput("")
+    setIsTyping(true)
 
-    // Placeholder assistant echo — replace with real backend later
-    const reply: Msg = {
-      id: crypto.randomUUID(),
-      role: "assistant",
-      content:
-        "Got it. I’ll prepare a bidding strategy. You can refine with lines like: min price, max price, rank < 1000, include trait “laser eyes”.",
-    }
-    setTimeout(() => setMessages((m) => [...m, reply]), 450)
+    // Find matching response and simulate 3-second delay
+    const responseText = findMatchingResponse(text)
+    
+    setTimeout(() => {
+      const reply: Msg = {
+        id: crypto.randomUUID(),
+        role: "assistant",
+        content: responseText,
+      }
+      setMessages((m) => [...m, reply])
+      setIsTyping(false)
+    }, 5000) // 3 second delay
   }
 
   function onKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
@@ -79,14 +111,18 @@ export function ChatWindow() {
               className={cn("flex items-start gap-3", m.role === "user" ? "justify-end" : "justify-start")}
             >
               {m.role === "assistant" && (
-                <Avatar className="h-6 w-6 border border-white/20">
-                  <AvatarFallback className="font-serif text-[10px]">ME</AvatarFallback>
-                </Avatar>
+                <Image 
+                  src="/images/pixel-robot-arcade-character.png" 
+                  alt="agent-img" 
+                  width={50} 
+                  height={50} 
+                  className="rounded-full"
+                />
               )}
 
               <div
                 className={cn(
-                  "max-w-[80%] rounded-md px-3 py-2 text-sm leading-relaxed",
+                  "max-w-[80%] rounded-md px-3 py-2 text-sm leading-relaxed whitespace-pre-line break-words",
                   m.role === "assistant"
                     ? "border border-cyan-300/60 bg-black/60 text-white shadow-[0_0_16px_rgba(103,232,249,0.25)]"
                     : "border border-pink-500/70 bg-black/60 text-white shadow-[0_0_16px_rgba(236,72,153,0.25)]",
@@ -96,12 +132,36 @@ export function ChatWindow() {
               </div>
 
               {m.role === "user" && (
-                <Avatar className="h-6 w-6 border border-white/20">
-                  <AvatarFallback className="font-serif text-[10px]">YOU</AvatarFallback>
-                </Avatar>
+                <Image 
+                  src="/images/pixel-laser-eyes-ape-nft-icon.png" 
+                  alt="agent-img" 
+                  width={50} 
+                  height={50} 
+                  className="rounded-full"
+                />
               )}
             </li>
           ))}
+          
+          {/* Typing indicator */}
+          {isTyping && (
+            <li className="flex items-start gap-3 justify-start">
+              <Image 
+                  src="/images/pixel-robot-arcade-character.png" 
+                  alt="agent-img" 
+                  width={50} 
+                  height={50} 
+                  className="rounded-full"
+                />
+              <div className="border border-cyan-300/60 bg-black/60 text-white shadow-[0_0_16px_rgba(103,232,249,0.25)] rounded-md px-3 py-2 text-sm">
+                <div className="flex gap-1">
+                  <div className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce"></div>
+                  <div className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                  <div className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                </div>
+              </div>
+            </li>
+          )}
         </ul>
       </div>
 
@@ -112,14 +172,16 @@ export function ChatWindow() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={onKeyDown}
-            placeholder="Describe your strategy: “Bid on Laser Eyes Apes under 0.3Ξ, rank < 1500, 24h duration.”"
+            placeholder='Describe your strategy: "Bid on Laser Eyes Apes under 0.3Ξ, rank < 1500, 24h duration."'
             className="min-h-[56px] flex-1 resize-none bg-black text-white placeholder:text-white/40 focus-visible:ring-pink-500"
+            disabled={isTyping}
           />
           <Button
             onClick={sendMessage}
-            className="border-2 border-pink-500 bg-black font-serif text-xs text-pink-500 hover:bg-pink-500 hover:text-black"
+            disabled={isTyping}
+            className="border-2 border-pink-500 bg-black font-serif text-xs text-pink-500 hover:bg-pink-500 hover:text-black disabled:opacity-50"
           >
-            SEND
+            {isTyping ? "..." : "SEND"}
           </Button>
         </div>
         <p className="mt-2 text-[11px] text-white/50">Press Enter to send • Shift+Enter for new line</p>

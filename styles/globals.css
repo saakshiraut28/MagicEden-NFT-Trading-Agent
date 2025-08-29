@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
@@ -113,11 +114,18 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+@font-face {
+  font-family: 'Press Start 2P';
+  src: url('./PressStart2P-Regular.ttf') format('truetype');
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
+
   }
   body {
     @apply bg-background text-foreground;
+    font-family: 'Press Start 2P', 'system-ui';
   }
 }

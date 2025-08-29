@@ -6,17 +6,17 @@ export default function Page() {
     <main>
       <header className="bg-black text-white border-b border-pink-500">
         <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
-          <h1 className="font-serif text-base md:text-lg tracking-widest">MAGICEDEN: NFT TRADING AGENT</h1>
+          <h1 className="font-serif text-base md:text-lg tracking-widest"> </h1>
           <nav className="text-xs md:text-sm">
             <ul className="flex items-center gap-6">
               <li>
                 <a className="hover:text-cyan-300" href="#features">
-                  How it works
+                  Explore
                 </a>
               </li>
               <li>
                 <a className="hover:text-cyan-300" href="/chat">
-                  Start
+                  Chat
                 </a>
               </li>
             </ul>
